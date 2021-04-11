@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js代码捕捉回车键</title>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = function (){
+        document.getElementById("username").onkeydown = function (event) {
+            //alert(111)
+            //获取键值
+            //回车键键值 13，esc键值 27
+            //alert(a) //[object KeyboardEvent]代表键盘动作
+            //对于键盘事件，都有keycoed属性来获取键值
+            //alert(event.keyCode)
+            if (event.keyCode == 13){
+                alert('正在验证登录')
+                }
+        }
+    }
+    </script>
+
+<input type="text" id="username">
+</body>
+</html>

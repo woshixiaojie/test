@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js函数初步2</title>
+</head>
+<body>
+<script type="text/javascript">
+    //js函数调用非常随意（弱类型），不需要重载
+    function sum(a,b) {
+        return a + b
+    }
+    //调用函数
+    var retvalue = sum(1,2)
+    alert(retvalue)
+
+    var retvalue2 = sum('xiaojie')
+    alert(retvalue2) //xiaojieundefined
+
+    var retvalue3 = sum()
+    alert(retvalue3) //NaN 表示不是数字
+
+    var retvalue4 = sum(1,2,3)
+    alert(retvalue4) // 结果3
+
+    function test1(username){
+        alert('test1')
+    }
+    function test1(){
+        alert('test1,test1')
+    }
+    test1() //同名函数出现，认后面一个，不能重名
+</script>
+</body>
+</html>s

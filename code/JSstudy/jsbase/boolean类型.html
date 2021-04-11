@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boolean类型</title>
+</head>
+<body>
+<script type="text/javascript">
+    //只有true和false
+    //Boolean,if（true/false）
+    var username = "jacl"
+    if (Boolean(username)){
+        alert("欢迎你" + username)
+    }else {
+        alert("用户名不能为空")
+    }
+    //有就是ture，没有就是false
+    alert(Boolean(1))
+    alert(Boolean(0))
+    alert(Boolean(''))
+    alert(Boolean(NaN))
+    alert(Boolean(null))
+    alert(Boolean(undefined))
+    alert(Boolean(Infinity))
+
+    /*
+    while (10/3){
+        alert('hehe')
+    }
+    */
+
+    for (var i = 0; i < 10;i++){
+        alert(i)
+    }
+
+    </script>
+</body>
+</html>

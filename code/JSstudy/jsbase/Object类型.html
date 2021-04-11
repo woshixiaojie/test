@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object类型</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    是所有类型的超类，
+    prototype 给类动态扩展属性和函数
+    在js中自定义的类，默认继承Object多有属性以及函数
+    js中定义类和定义函数一样
+    创建对象语法
+    new 构造方法名（实参）
+     */
+    function sayHello() {
+        
+    }
+    //obj是一个引用，保存内存地址，指向堆中的对象
+    var obj = new sayHello()
+    
+    //创建一个学生类
+    function Student() {
+        alert("student")
+    }
+    //当作函数
+    Student()
+
+    //当作类创建对象
+    var stu = new Student()
+    alert(stu) //[object Object]
+
+    //js中类的定义，和构造函数的定义是一起来完成
+    function User(a,b,c) {
+        //声明属性（this表示当前对象）
+        //User中有三个属性：sno/sname/sage
+        this.sno = a;
+        this.sname = b;
+        this.sage = c
+    }
+    //创建对象
+    var u1 = new User(111,"xiaojie",30)
+    //访问对象属性
+    alert(u1.sno)
+    alert(u1.sname)
+    alert(u1.sage)
+
+    var u2 = new User(222,"xiaojie22",22)
+    //访问对象属性
+    alert(u2.sno)
+    alert(u2.sname)
+    alert(u2.sage)
+
+    //访问一个对象，还可以使用这种语法
+    alert(u2["sno"])
+    alert(u2["sname"])
+    alert(u2["sage"])
+    
+    //另一种语法
+    emp = function (ename,sal) {
+        //属性
+        this.ename = ename
+        this.sal = sal
+    }
+    //注意一定要new
+    var e1 = new emp("xiaojie",3000)
+    alert(e1["ename"] + "," + e1["sal"])
+
+    Peoduct = function (pno,pname,price) {
+        //属性
+        this.pno = pno
+        this.pname = pname
+        this.price = price
+        //函数
+        this.getPrice = function () {
+            return this.price
+        }
+    }
+    var pro = new Peoduct(111,"西瓜",4)
+    var pri = pro.getPrice()
+    alert(pri)
+    
+    //可以通过prototype这个属性来给类动态扩展属性以及函数
+    Peoduct.prototype.getPname = function () {
+        return this.pname
+    }
+
+    //调用后期扩展的getPname()函数
+    var pname = pro.getPname()
+    alert(pname)
+
+    //给String扩展一个函数名
+    String.prototype.suiyui = function () {
+        alert("这是给String类型扩展的一个函数，叫做suiyi")
+    }
+    "abc".suiyui()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3_类中方法this指向</title>
+</head>
+<body>
+<script type="text/javascript">
+    class Preson {
+        constructor(name,age) {
+            this.name = name
+            this.age = age
+        }
+        speak(){
+            console.log(this)
+        }
+    }
+    const p1 = new Preson('tom',18)
+    p1.speak()//通过实例调用
+    const x1 = p1.speak
+    x1()
+
+    function demo() {
+        'use strict'
+        console.log(this)
+    }
+    demo()
+
+    function demo2() {
+        console.log(this)
+    }
+    demo2()
+</script>
+</body>
+</html>

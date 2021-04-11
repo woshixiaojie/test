@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js局部变量和全部变量</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    全局变量
+        函数体外，和浏览器相关
+    局部变量
+        函数体内，包括形参，和函数有关
+     */
+    //全局变量
+    var username = 'lishi'
+    function assessUsername() {
+        //局部变量
+        var usernane = 'jack'
+        //就近原则
+        alert('username = ' + usernane)
+    }
+    //函数调用
+    assessUsername()
+    //访问全局变量
+    alert('username = ' + username)
+
+    //报错 语法错误
+    //alert('age = ' + age)
+    function myfun() {
+        //没有var关键字，则是全局变量
+       myname = 'xiaojie111'
+    }
+    myfun()
+    alert('myname = ' + myname)
+    </script>
+</body>
+</html>

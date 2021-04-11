@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展开运算符</title>
+</head>
+<body>
+<script type="text/javascript">
+    let arr1 = [1,3,5,7,9]
+    let arr2 = [2,4,6,8,10]
+    console.log(...arr1)
+    console.log(...arr2)//展开数组
+
+    let arr3 = [...arr1,...arr2]//连接数组
+    console.log(...arr3)
+
+    //在函数中使用
+    function sum1(...numbers) {
+       return  numbers.reduce((preValue,currentValue)=>{
+            return preValue + currentValue
+        }
+    )
+    }
+    console.log(sum1(1,2,3,4,5))
+
+    //构造自变量对象时使用展开语法
+    let person = {name:'IXAOJIE',age:23}
+    let person1 = {...person}
+    person.name = 'tom'
+    console.log(person1)
+    console.log(person)
+
+    //复制对象，修改属性,合并
+    let person3 = {...person,name:"changzhi",address:'hangzhou'}
+    console.log(person3)
+</script>
+</body>
+</html>

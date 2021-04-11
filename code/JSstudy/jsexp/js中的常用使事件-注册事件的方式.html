@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js中的常用事件</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    blur失去焦点
+    focus获得焦点
+
+    click单击
+    double双击
+
+    keydown键盘按下
+    keyup键盘弹起
+
+    mousedown鼠标按下
+    mouseover鼠标经过
+    mousemove鼠标移动
+    mouseout鼠标离开
+    mouseup鼠标弹起
+
+    reset重置表单
+    submit表单提交
+
+    change下拉列表中选项改变，或文本框 内容改变
+    select文本被选中
+    load页面加载完毕（整个html页面中全部加载完毕）
+     */
+    //sayhello被称为回调函数
+    //尤其她函数调用
+    function Sayhello() {
+        alert("hello")
+    }
+    </script>
+    <!--注册事件的第一种方式，直接在标签中使用事件句柄-->
+    <!--以下代码的含义是：将sayhello注册到按钮上，等待click事件发生-->
+    <input type="button" value="hello" onclick="Sayhello()">
+    <input type="button" value="hello2" id="mybtn">
+    <input type="button" value="hello3" id="mybtn1">
+    <input type="button" value="hello4" id="mybtn2">
+    <script type="text/javascript">
+        function doSome() {
+            alert("do some")
+        }
+        /*
+        第二种注册事件的方式，使用纯js代码完成事件的注册
+         */
+        //第一步先获取这个按钮对象,docunment全部小写，内置对象，可以直接用，document就是整个html页面
+        var btnObj = document.getElementById("mybtn")
+        //第二步给按钮对象的onclick属性赋值
+        btnObj.onclick = doSome //注意不要带括号
+
+        var mybtn = document.getElementById("mybtn1")
+        mybtn.onclick = function () {
+            alert("ixaojie2212")
+        }
+
+        document.getElementById("mybtn2").onclick = function () {
+            alert("ixaojie")
+        }
+        </script>
+</body>
+</html>

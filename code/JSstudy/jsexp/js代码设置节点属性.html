@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js代码设置节点属性</title>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("btn1").onclick = function () {
+            //一个节点对象只要有属性，都可以点
+            document.getElementById('mytext').type = "checkbox"
+        }
+    }
+    </script>
+    <input type="text" id="mytext">
+    <input type="button" value="将文本框改为复选框" id="btn1">
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js控制语句</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    if
+    switch
+
+    while
+    do..while
+    fro循环
+
+    break
+    continue
+     */
+    //创建js数组
+    var arr = [false,1,"xiaojie",3.14]//js中数组中元素的类型，个数随意
+    //遍历数组
+    for(var i = 0; i < arr.length; i++){
+        alert(arr[i])
+    }
+    for (var i in arr){
+        alert(i)
+        alert(arr[i])
+    }
+    function info(username,pawwsord) {
+        this.username = username
+        this.password = pawwsord
+    }
+    var u = new info("ixaojie","4444")
+
+    with (u){
+        alert(username + "," + password)
+    }
+    </script>
+</body>
+</html>

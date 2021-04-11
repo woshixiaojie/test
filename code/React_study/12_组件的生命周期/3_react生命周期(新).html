@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react生命周期(新)</title>
+</head>
+<body>
+<!-- 准备好一个容器 -->
+<div id="test"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
+
+<!-- 引入react-dom，用于支持react操作DOM -->
+<script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
+
+<!-- 引入babel，用于将jsx转为js -->
+<script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
+
+<script type="text/babel">
+
+    //创建组件，父组件A
+    class A extends React.Component{
+
+        constructor() {
+            super();
+            console.log('A -- constructor')
+        }
+
+        //从props得到一个衍生的状态
+        static getDerivedStateFromProps(props,state){
+            console.log('A -- getDerivedStateFromProps',props,state)
+            return null
+        }
+
+        //获取更新之前的快照
+        getSnapshotBeforeUpdate(){
+            console.log('A -- getSnapshotBeforeUpdate')
+            return 'atguigu'
+        }
+
+        componentDidMount(){
+            console.log('A -- componentDidMount')
+        }
+
+        shouldComponentUpdate(){
+            console.log('A --- shouldComponentUpdate')
+            return true
+        }
+
+        componentDidUpdate(preProps,preState,snapshotValue){
+            console.log('A --- componentDidUpdate',preProps,preState,snapshotValue)
+        }
+
+
+
+        state = {carName:'奔驰'}
+
+        changeCar= ()=>{
+            const {carName} = this.state
+            this.setState({carName:'宝马'})
+        }
+        render(){
+            console.log('A -- render')
+            return(
+                <div>
+                    <div>我是A组件</div>
+                    <button onClick={this.changeCar}>换车</button>
+                    <div>接收到的车是:{this.state.carName}</div>
+                </div>
+            )
+        }
+    }
+
+    //子组件B
+    class B extends React.Component{
+        /*componentDidMount(){
+            console.log('B --- componentDidMount',)
+        }
+
+        //组件将要接受新的钩子
+        UNSAFE_componentWillReceiveProps(props){
+            console.log('B --- componentWillReceiveProps',props)
+        }
+
+        //组件是否被更新，控制组件阀门
+        shouldComponentUpdate(){
+            console.log('B --- shouldComponentUpdate')
+            return true
+        }
+
+        //组件将要被更新
+        UNSAFE_componentWillUpdate(){
+            console.log('B --- componentWillUpdate')
+        }*/
+
+        //组件已经被更新
+        /*componentDidUpdate(){
+            console.log('B --- componentDidUpdate')
+        }*/
+        render(){
+            //console.log('B --- render')
+            return(
+                <div>
+                    <div>我是B组件，接收到的车是:{this.props.carName}</div>
+                </div>
+            )
+        }
+    }
+
+    //渲染组件到页面
+    ReactDOM.render(<A carName='tom'/>,document.getElementById('test'))
+</script>
+</body>
+</html>

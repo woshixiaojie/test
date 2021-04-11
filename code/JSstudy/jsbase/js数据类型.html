@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js中的数据类型</title>
+</head>
+<body>
+<script type="text/javascript">
+    //变量没有数据类型，值有数据类型
+        //原始类型、引用类型
+    /*
+    数据类型包含
+        原始类型 undefined、Number、String、Null、Boolean、
+        引用类型 Object以及Object子类
+        在ES6中增加Symblo
+        js有种运算符，typeof，可以动态获取变量数据类型
+            typeof 变量名
+            typeof 运算结果必须全都是6个小写字符串之一
+                "undefined"
+                "number"
+                "string"
+                "boolean"
+                "object"
+                "function"
+     在js中比较字符串是否相等，使用"=="。没有equals
+        
+     */
+    /*function sum(a,b) {
+        if (typeof a == 'number' && typeof b == 'number'){
+            return a + b
+        }
+        alert(a + ',' + b + '必须为数字')
+    }
+    //没有返回值
+    var retValue = sum(false,'abc')
+    alert(retValue) //undefined
+
+    var retValue2 = sum(1,3)
+    alert(retValue2)
+    */
+    var a
+    alert(typeof a) //"undefined"
+
+    var b = 10
+    alert(typeof b) //"number"
+
+    var c = 'abc'
+    alert(typeof c) //"string"
+
+    var d = null
+    alert(typeof d) // "object"
+
+    var e = false
+    alert(typeof e) // "boolean"
+
+    //sayHello是一个函数
+    function sayHello() {
+
+    }
+    alert(typeof sayHello)// function
+    </script>
+</body>
+</html>

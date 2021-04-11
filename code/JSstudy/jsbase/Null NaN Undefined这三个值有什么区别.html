@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Null NaN Undefined这三个值有什么区别</title>
+</head>
+<body>
+<script type="text/javascript">
+    //数据类型不一致
+    alert(typeof null) //object
+    alert(typeof NaN) //number
+    alert(typeof undefined) //undefined
+
+    //null和undefined可以同等
+    alert(null == NaN) //false
+    alert(undefined == null) //true
+    alert(null == NaN) // false
+
+    //==(等同运算符，只判断值是否相等)
+    //===(全等运算符，判断值和数据类型是否相等)
+    alert(null === NaN) //false
+    alert(undefined === null) //false
+    alert(null === NaN) // false
+
+    alert(1 == true)
+    alert(1 === true)
+    </script>
+</body>
+</html>
