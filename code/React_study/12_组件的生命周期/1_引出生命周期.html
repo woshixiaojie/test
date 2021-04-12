@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>引出生命周期</title>
+</head>
+<body>
+<div id="test"></div>
+
+<!-- 引入babel，用于将jsx转化为js -->
+<script type="text/javascript" src="../js/react.development.js"></script>
+
+<!-- 引入React-dom，用于支持dom操作 -->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+<!-- 引入React核心库 -->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+
+    //1、创建组件component
+    //生命周期回调函数 <=> 生命周期钩子函数 <=> 生命周期函数 <=> 生命周期钩子
+    class Life extends React.Component{
+        //透明度opacity
+        state = {opacity:1}
+
+        death= ()=>{
+            //卸载unmount组件,卸载在哪个节点的组件
+            ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+        }
+
+        //循环变化透明度action
+        /*action= ()=>{
+            //定时器
+            setInterval(()=>{
+                //获取状态,const声明的变无法更改，可以使用let
+                let {opacity} = this.state
+
+                //自身减小0.1, 分配assignment
+                opacity -= 0.1
+
+                //将状态重新变为1
+                if (opacity <= 0) opacity = 1
+
+                //修改新的透明度状态
+                this.setState({opacity})
+            },200)
+        }*/
+
+        //组件挂载完毕之后调用
+        componentDidMount(){
+            //定时器
+            this.timer = setInterval(()=>{
+                //获取状态,const声明的变无法更改，可以使用let
+                let {opacity} = this.state
+
+                //自身减小0.1, 分配assignment
+                opacity -= 0.1
+
+                //将状态重新变为1
+                if (opacity <= 0) opacity = 1
+
+                //修改新的透明度状态
+                this.setState({opacity})
+            },200)
+        }
+
+        //组件将要被卸载
+        componentWillUnmount(){
+            //清除定时器
+            clearInterval(this.timer)
+        }
+
+        //只要修改状态React就调render
+        //render调用时机：初始化渲染、状态更新之后
+        render(){
+           /* //定时器
+            setInterval(()=>{
+                //获取状态,const声明的变无法更改，可以使用let
+                let {opacity} = this.state
+
+                //自身减小0.1, 分配assignment
+                opacity -= 0.1
+
+                //将状态重新变为1
+                if (opacity <= 0) opacity = 1
+
+                //修改新的透明度状态
+                this.setState({opacity})
+            },200)*/
+            console.log('render')
+            return(
+                <div>
+                    {/* 使用样式style，必须用双括号{{}} */}
+                    <h2 style={{opacity:this.state.opacity}}>React学不会怎么办？</h2>
+                    <button onClick={this.death}>不活了</button>
+                </div>
+            )
+        }
+    }
+
+    //2、渲染组件
+    ReactDOM.render(<Life/>,document.getElementById('test'))
+</script>
+</body>
+</html>

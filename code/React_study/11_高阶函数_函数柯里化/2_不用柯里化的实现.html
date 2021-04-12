@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>不用柯里化的实现</title>
+</head>
+<body>
+<div id="test"></div>
+
+<!-- 引入babel，用于将jsx转化为js -->
+<script type="text/javascript" src="../js/react.development.js"></script>
+
+<!-- 引入React-dom，用于支持dom操作 -->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+<!-- 引入React核心库 -->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+    //1.创建虚拟DOm
+    class Login extends React.Component{
+        /*
+            高阶函数：如果一个函数符合下面2个规范中的任何一个，那该函数就是高阶函数
+                    1、若A函数，接受的参数是一个函数，那么A就可以称之为高阶函数
+                    2、若A函数，调用的返回值依然是一个函数，那么A就可以称之为高阶函数
+
+            函数柯里化：通过函数调用继续返回函数的方式，实现多次接受参数最后统一处理的函数编码形式
+                function sum1(a) {
+                    return (b)=>{
+                        return (c)=>{
+                            return a+b+c
+                        }
+                    }
+                }
+         */
+
+        //初始化账号，密码
+        state = {
+            username:'',
+            password:''
+        }
+
+        //保存表单数据到状态中
+        saveData=(dataType,event)=>{
+            this.setState({[dataType]:event.target.value})
+
+        }
+
+        //表达提交的回调
+        saveData1=(event)=>{
+            event.preventDefault()
+            const {username,password} = this.state
+            alert(`用户名：${username}，密码${password}`)
+        }
+
+        render(){
+            return(
+                <form action="http://atguigu.com" onSubmit={this.saveData1}>
+                    <label>
+                                                {/*箭头函数，左侧只有一个参数可以省略括号，右侧只有一个函数可以省略括号*/}
+                        用户名：<input onChange={event => this.saveData('username',event) } type="username" name="username"/>
+                        密码：<input onChange={event => this.saveData('password',event) } type="password" name="password"/>
+                    </label>
+                    <button>登陆</button>
+                </form>
+            )
+        }
+    }
+
+    //渲染组件到页面
+    ReactDOM.render(<Login/>,document.getElementById('test'))
+</script>
+</body>
+</html>
